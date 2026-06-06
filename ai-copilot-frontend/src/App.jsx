@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { getCurrentPage } from "./services/chromeApi";
 
-
 function App() {
   const [pageData, setPageData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -50,21 +49,89 @@ function App() {
               Page Title
             </h2>
 
-            <p className="font-medium break-words">
-              {pageData.title}
-            </p>
+            <p className="font-medium break-words">{pageData.title}</p>
           </div>
 
           {/* URL */}
           <div className="rounded-xl border border-slate-800 bg-slate-900 p-3">
-            <h2 className="mb-1 text-xs uppercase text-slate-400">
-              URL
-            </h2>
+            <h2 className="mb-1 text-xs uppercase text-slate-400">URL</h2>
 
-            <p className="text-sm break-all text-blue-400">
-              {pageData.url}
-            </p>
+            <p className="text-sm break-all text-blue-400">{pageData.url}</p>
           </div>
+          {pageData?.context && (
+            <div className="rounded-xl border border-slate-800 bg-slate-900 p-3">
+              <h2 className="mb-2 text-xs uppercase text-slate-400">
+                Context Analysis
+              </h2>
+
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                <p>
+                  <span className="font-semibold">Type:</span>{" "}
+                  {pageData.context.resourceType}
+                </p>
+
+                <p>
+                  <span className="font-semibold">Words:</span>{" "}
+                  {pageData.context.wordCount}
+                </p>
+
+                <p>
+                  <span className="font-semibold">Code:</span>{" "}
+                  {pageData.context.hasCode ? "✅" : "❌"}
+                </p>
+
+                <p>
+                  <span className="font-semibold">Forms:</span>{" "}
+                  {pageData.context.hasForms ? "✅" : "❌"}
+                </p>
+
+                <p>
+                  <span className="font-semibold">Tables:</span>{" "}
+                  {pageData.context.hasTables ? "✅" : "❌"}
+                </p>
+
+                <p>
+                  <span className="font-semibold">Images:</span>{" "}
+                  {pageData.context.hasImages ? "✅" : "❌"}
+                </p>
+
+                <p>
+                  <span className="font-semibold">Video:</span>{" "}
+                  {pageData.context.hasVideo ? "✅" : "❌"}
+                </p>
+
+                <p>
+                  <span className="font-semibold">Audio:</span>{" "}
+                  {pageData.context.hasAudio ? "✅" : "❌"}
+                </p>
+
+                <p>
+                  <span className="font-semibold">Media:</span>{" "}
+                  {pageData.context.hasMedia ? "✅" : "❌"}
+                </p>
+
+                <p>
+                  <span className="font-semibold">Playing:</span>{" "}
+                  {pageData.context.hasPlayingMedia ? "✅" : "❌"}
+                </p>
+
+                <p>
+                  <span className="font-semibold">Canvas:</span>{" "}
+                  {pageData.context.hasCanvas ? "✅" : "❌"}
+                </p>
+
+                <p>
+                  <span className="font-semibold">Iframe:</span>{" "}
+                  {pageData.context.hasIframe ? "✅" : "❌"}
+                </p>
+
+                <p>
+                  <span className="font-semibold">Inputs:</span>{" "}
+                  {pageData.context.hasInputs ? "✅" : "❌"}
+                </p>
+              </div>
+            </div>
+          )}
 
           {/* Content */}
           <div className="rounded-xl border border-slate-800 bg-slate-900 p-3">

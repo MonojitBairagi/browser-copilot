@@ -4,3 +4,4 @@ routers/__pycache__
 middlewares/__pycache__
 controllers/__pycache__
 __pycache__
+.venv
